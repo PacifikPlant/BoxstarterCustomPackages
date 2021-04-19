@@ -52,7 +52,6 @@ elseif ($packageArgs.Version -eq 2 -and
 
     & dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart | Out-Null
     & dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart | Out-Null
-    Invoke-Reboot
     Install-ChocolateyPackage @packageArgs
 
 $software = "Windows Subsystem for Linux Update"
