@@ -50,8 +50,8 @@ elseif ($packageArgs.Version -eq 2 -and
     (($OSMajorBuildNumber -in (18362, 18363) -and $OSMinorBuildNumber -ge 1049) -or
         ($OSMajorBuildNumber -ge 19041))) {
 
-    & dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart | Out-Null
-    & dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart | Out-Null
+    & dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /qn | Out-Null
+    & dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /qn | Out-Null
     Install-ChocolateyPackage @packageArgs
 
 $software = "Windows Subsystem for Linux Update"
