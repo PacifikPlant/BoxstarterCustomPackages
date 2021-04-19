@@ -14,5 +14,15 @@ iex "refreshenv"
 #iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1'))
 #Get-Boxstarter -Force
 
+# Get user credentials for autologin during reboots
+Write-Host "[ * ] Getting user credentials ..."
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds" -Name "ConsolePrompting" -Value $True
+if ([string]::IsNullOrEmpty($password)) {
+	$cred=Get-Credential $env:username
+} else {
+	$spasswd=ConvertTo-SecureString -String $password -AsPlainText -Force
+	$cred=New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $env:username, $spasswd
+}
 
+Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/PacifikPlant/BoxstarterCustomPackages/main/wsl.ps1 -Credential $cred
 
