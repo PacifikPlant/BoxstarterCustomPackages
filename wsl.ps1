@@ -50,10 +50,11 @@ elseif ($packageArgs.Version -eq 2 -and
     (($OSMajorBuildNumber -in (18362, 18363) -and $OSMinorBuildNumber -ge 1049) -or
         ($OSMajorBuildNumber -ge 19041))) {
 
-    & dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /quiet | Out-Null
-    & dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /quiet | Out-Null
-    Install-ChocolateyPackage @packageArgs
-    & wsl.exe --set-default-version 2
+#!!! Need troubleshooting here
+    #& dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /quiet | Out-Null
+    #& dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /quiet | Out-Null
+    #Install-ChocolateyPackage @packageArgs
+    #& wsl.exe --set-default-version 2
 }
 # https://www.appveyor.com/docs/environment-variables/
 elseif ($env:APPVEYOR -eq 'True') {
