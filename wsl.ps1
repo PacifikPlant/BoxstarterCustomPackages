@@ -53,12 +53,6 @@ elseif ($packageArgs.Version -eq 2 -and
     & dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /quiet | Out-Null
     & dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /quiet | Out-Null
     Install-ChocolateyPackage @packageArgs
-
-$software = "Windows Subsystem for Linux Update"
-$installed = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Where { $_.DisplayName -eq $software }) -ne $null
-If(-Not $installed) {
-	Invoke-Reboot
-}
     & wsl.exe --set-default-version 2
 }
 # https://www.appveyor.com/docs/environment-variables/
