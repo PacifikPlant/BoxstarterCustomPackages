@@ -5,7 +5,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 Write-Host "Chocolatey installed" -ForegroundColor Green -NoNewline
 
 Write-Host "Installing Boxstarter" -ForegroundColor Yellow -NoNewline
-CINST Boxstarter
+CINST Boxstarter -y
 Write-Host "Boxstarter Installed" -ForegroundColor Green -NoNewline
 
 #Set-ExecutionPolicy Bypass -Scope Process -Force
