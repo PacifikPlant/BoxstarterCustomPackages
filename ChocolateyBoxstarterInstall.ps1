@@ -7,6 +7,7 @@ Write-Host "Chocolatey installed" -ForegroundColor Green -NoNewline
 Write-Host "Installing Boxstarter" -ForegroundColor Yellow -NoNewline
 CINST Boxstarter -y
 Write-Host "Boxstarter Installed" -ForegroundColor Green -NoNewline
+iex "refreshenv"
 
 #Set-ExecutionPolicy Bypass -Scope Process -Force
 #[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
